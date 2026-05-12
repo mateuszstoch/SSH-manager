@@ -1,0 +1,50 @@
+[package]
+name = "sm"
+version = "0.1.0"
+edition = "2021"
+description = "CLI SSH connection manager with optional encryption"
+
+[[bin]]
+name = "sm"
+path = "src/main.rs"
+
+[dependencies]
+# CLI argument parsing
+clap = { version = "4", features = ["derive"] }
+
+# Async runtime – used for concurrent host reachability checks
+tokio = { version = "1", features = ["full"] }
+
+# Serialization (connections → JSON, config → TOML)
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Encryption: AES-256-GCM + PBKDF2 key derivation
+aes-gcm = "0.10"
+pbkdf2 = { version = "0.12", features = ["hmac"] }
+sha2 = "0.10"
+rand = "0.8"
+
+# Master-password hashing (Argon2id)
+argon2 = "0.5"
+
+# UUIDs for connection IDs
+uuid = { version = "1", features = ["v4", "serde"] }
+
+# Timestamps
+chrono = { version = "0.4", features = ["serde"] }
+
+# Interactive UI: selection menus and table rendering
+inquire = "0.7"
+tabled = "0.15"
+
+# Secure password prompt (hides terminal input)
+rpassword = "7"
+
+# Resolves the user's home directory
+dirs = "5"
+
+# Error handling helpers
+thiserror = "1"
+anyhow = "1"
