@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand};
+use clap::{ArgAction, Parser, Subcommand};
 
 /// SSH Manager – manage saved SSH connections from the terminal.
 #[derive(Parser)]
@@ -6,9 +6,13 @@ use clap::{Parser, Subcommand};
     name = "sm",
     version,
     about = "CLI SSH connection manager with optional encryption",
-    long_about = None
+    long_about = None,
+    disable_help_flag = true
 )]
 pub struct Cli {
+    #[arg(long = "help", action = ArgAction::Help, global = true)]
+    pub help: Option<bool>,
+    
     #[command(subcommand)]
     pub command: Command,
 }
