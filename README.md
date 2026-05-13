@@ -13,34 +13,18 @@ Supports optional master-password protection with AES-256-GCM encrypted password
 
 ## Installation
 
-### Option 1 — Download pre-built binary (recommended)
+### Option 1 — Install via script (recommended)
 
-Download the latest release for your platform from the
-[GitHub Releases page](https://github.com/mateuszstoch/SSH-manager/releases/latest).
-
-**Linux / macOS (x86_64)**
+**macOS / Linux**
 
 ```sh
-curl -Lo sm https://github.com/mateuszstoch/SSH-manager/releases/latest/download/sm-x86_64-unknown-linux-musl
-chmod +x sm
-mv sm ~/.local/bin/
-```
-
-**macOS (Apple Silicon)**
-
-```sh
-curl -Lo sm https://github.com/mateuszstoch/SSH-manager/releases/latest/download/sm-aarch64-apple-darwin
-chmod +x sm
-mv sm ~/.local/bin/
+curl -fsSL https://raw.githubusercontent.com/mateuszstoch/SSH-manager/master/scripts/install.sh | bash
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-Invoke-WebRequest -Uri https://github.com/mateuszstoch/SSH-manager/releases/latest/download/sm-x86_64-pc-windows-msvc.exe `
-                  -OutFile sm.exe
-# Move to a directory that is on your PATH, e.g.:
-Move-Item sm.exe "$env:USERPROFILE\.local\bin\sm.exe"
+irm https://raw.githubusercontent.com/mateuszstoch/SSH-manager/master/scripts/install.ps1 | iex
 ```
 
 Verify the binary is on your `PATH`:
